@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체중 기록</title>
+    <link rel="stylesheet" href="record.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li class="active">체중</li>
+                    <li><a href="">컨디션</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="content-wrapper">
+                <div class="weight-section">
+                    <h2>과연 오늘 내 체중은?</h2>
+                    <button class="goal-button">목표 체중 한번만 설정하기</button>
+                    <div class="goal-input-container" style="display: none;">
+                        <input type="number" class="goal-weight-input" placeholder="목표 체중 입력 (kg)">
+                        <button class="set-goal-button">설정</button>
+                    </div>
+                    <div class="weight-display">
+                        <span class="weight">00.0</span><span class="unit">kg</span>
+                    </div>
+                    <button class="record-button">체중 기록하기</button>
+                    <div class="input-container" style="display: none;">
+                        <input type="number" class="weight-input" placeholder="체중 입력 (kg)">
+                        <button class="save-button">저장</button>
+                    </div>
+                    <div class="sync-text">건강 앱에서 불러오기 <span class="sync-icon">↻</span></div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="weightChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="record.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>점심 메뉴 기록</title>
+    <link rel="stylesheet" href="food inner2.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #005b62;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #lunchAddButton {
+            margin-left: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #4caf9e;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        #lunchAddButton:hover {
+            background-color: #458ea0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu-section">
+            <h2><span>점심 식단</span> - 식단과 칼로리를 함께 작성해주세요 !</h2>
+            <div class="input-area">
+                <input type="text" id="lunchMenuInput" placeholder="메뉴 - 칼로리 순으로 작성">
+                <button id="lunchAddButton">입력</button>
+            </div>
+            <div id="lunchMenuList"></div>
+        </div>
+        <div class="record-section">
+            <h1>ദ്ദി ᵔ∇ᵔ 섭취 칼로리 추세</h1>
+            <div id="recordList">
+                <canvas id="lunchCaloriesChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="food inner2.js"></script>
+</body>
+</html>

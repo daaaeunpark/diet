@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>food</title>
+    <link rel="stylesheet" href="food.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .message {
+            position: absolute;
+            background: #fff;
+            padding: 5px 10px;
+            border: 1px solid #000;
+            border-radius: 20px;
+            top: -110px; /* 상자 위로 위치 조정 */
+            left: 95%;
+            transform: translateX(-50%);
+            z-index: 10;
+            white-space: nowrap;
+        }
+        .status {
+            cursor: pointer;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>오늘의 섭취 음식을 알려주세요 !</h1>
+        <div class="box">
+            <div class="item">
+                <div class="title"><i class="ri-sun-fill"></i></div>
+                <div class="meal">아침</div>
+                <div class="status">✔️ 단식했어요</div>
+            </div>
+            <a href="food inner.html" class="add">+</a>
+        </div>
+        <div class="box">
+            <div class="item">
+                <div class="title"><i class="ri-restaurant-fill"></i></div>
+                <div class="meal">점심</div>
+                <div class="status">✔️ 단식했어요</div>
+            </div>
+            <a href="food inner2.html" class="add">+</a>
+        </div>
+        <div class="box">
+           <div class="item">
+                <div class="title"><i class="ri-restaurant-2-fill"></i></div>
+                <div class="meal">저녁</div>
+                <div class="status">✔️ 단식했어요</div>
+           </div>    
+           <a href="food inner3.html" class="add">+</a>
+        </div>
+        <div class="box">
+            <div class="item">
+                <div class="title"><i class="ri-cake-3-line"></i></div>
+                <div class="meal">간식</div>
+                <div class="status">✔️ 참았어요</div>
+            </div>
+            <a href="snack.html" class="add">+</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusElements = document.querySelectorAll('.status');
+
+            statusElements.forEach(function(status) {
+                status.style.cursor = 'pointer';
+                status.addEventListener('click', function() {
+                    const message = document.createElement('div');
+                    message.classList.add('message');
+                    message.textContent = '잘했어요 !';
+                    status.appendChild(message);
+
+                    setTimeout(function() {
+                        message.remove();
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

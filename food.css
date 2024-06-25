@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #00529a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transform: scale(1.2);
+    transform-origin: center; /* 스케일 기준점 설정 */
+    overflow: hidden;
+    }
+    
+
+
+.container {
+    text-align: center;
+    max-width: 400px; /* 최대 넓이 설정 */
+    display: flex;
+    flex-wrap: wrap; /* Flexbox 래핑 활성화 */
+    justify-content: center;
+}
+
+h1 {
+    font-size: 1.5em;   
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #003059;
+    width: 180px; /* 고정된 박스 너비 */
+    height: 180px;
+    box-sizing: border-box; /* 박스 크기 계산에 padding과 border 포함 */
+}
+.title-icon{
+    color:#ffffff;
+}
+
+.item {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.title {
+    font-size: 2.2em;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+
+
+.meal{
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.status {
+    padding: 2px 5px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-top: 30px;
+    font-size: 0.8em;
+}
+    
+
+
+.add {
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    font-size: 4em;
+    color: #ffffff;
+    cursor: pointer;
+}

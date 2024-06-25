@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>간식 메뉴 기록</title>
+    <link rel="stylesheet" href="snack.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #925671;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+        }
+        #snackAddButton {
+            margin-left: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ff6868;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #snackAddButton:hover {
+            background-color: #d5a2a2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu-section">
+            <h2><span>간식 식단</span> - 간식과 칼로리를 함께 작성해주세요 !</h2>
+            <div class="input-area">
+                <input type="text" id="snackMenuInput" placeholder="메뉴 - 칼로리 순으로 작성">
+                <button id="snackAddButton">입력</button>
+            </div>
+            <div id="snackMenuList"></div>
+        </div>
+        <div class="record-section">
+            <h1>ദ്ദി ˃ ᴗ ˂ 섭취 칼로리 추세</h1>
+            <div id="recordList">
+                <canvas id="snackCaloriesChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="snack.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ff8b61;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+    width: 80%;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-right: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    font-size: 1.5em;
+    opacity: 0.7;
+}
+
+nav ul li a {
+    color: inherit;
+    text-decoration: none;
+    margin-right: 550px;
+}
+
+nav ul li.active {
+    opacity: 1;
+    font-weight: bolder;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.weight-section {
+    background-color: #ff9c79;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 45%;
+    margin-right: 20px;
+}
+
+.weight-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.weight-display {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.weight {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.unit {
+    font-size: 1.5em;
+}
+
+.scale-icon {
+    display: none;
+}
+
+.record-button, .goal-button {
+    background-color: #ff7034;
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.record-button:hover, .goal-button:hover {
+    background-color: #e5672e;
+}
+
+.input-container, .goal-input-container {
+    margin-top: 20px;
+}
+
+.weight-input, .goal-weight-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+.save-button, .set-goal-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff7034;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.save-button:hover, .set-goal-button:hover {
+    background-color: #e5672e;
+}
+
+.sync-text {
+    font-size: 0.9em;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+.sync-icon {
+    display: inline-block;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+}
+
+.sync-icon:hover {
+    transform: rotate(360deg);
+}
+
+.chart-container {
+    flex: 1;
+    max-width: 45%;
+    margin-top: 60px;
+}

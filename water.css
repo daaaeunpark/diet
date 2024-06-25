@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #369cc4; /* 스카이블루 배경색 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: row; /* 차트를 오른쪽으로 위치시키기 위해 row로 설정 */
+    align-items: center;
+}
+
+.water-section {
+    background-color: #87CEEB; 
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.water-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.water-display {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.water {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.unit {
+    font-size: 1.5em;
+}
+
+.icon {
+    font-size: 100px;
+    margin-top: 20px;
+    display: block;
+}
+
+.record-button, .goal-button {
+    background-color: #00BFFF; /* 스카이블루 버튼색 */
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.record-button:hover, .goal-button:hover {
+    background-color: #1E90FF;
+}
+
+.input-container, .goal-input-container {
+    margin-top: 20px;
+}
+
+.water-input, .goal-water-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+.save-button, .set-goal-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #00BFFF;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.save-button:hover, .set-goal-button:hover {
+    background-color: #1E90FF;
+}
+
+.sync-text {
+    font-size: 0.9em;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+.sync-icon {
+    display: inline-block;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+}
+
+.sync-icon:hover {
+    transform: rotate(360deg);
+}
+
+.chart-container {
+    width: 60%; /* 차트 크기 조정 */
+    margin-left: 40px; /* 차트와 물 섭취 섹션 간격 조정 */
+}

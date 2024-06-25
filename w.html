@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수분 섭취 확인</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #dcf7ff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction:row;
+            gap: 10px;
+            align-items: center;
+        }
+        .input-section, .message-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 350px;
+            width: 500px;
+        }
+        .input-section {
+            justify-content: center;
+            align-items: center;
+        }
+        .input-section h1 {
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .input-container input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .input-container button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #7dcdff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+        .input-container button:hover {
+            background-color: #0f6bff;
+        }
+        .message-section {
+            width: 80%;
+            justify-content: center;
+            text-align: center;
+            height: 120px;
+            margin-top: 40px;
+            background-color: rgb(177, 222, 255);
+            border-radius:  100px;
+        }
+        .chart-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 350px;
+            width: 500px;
+        }
+        .message-section img {
+            max-width: 50px;
+            max-height: 50px;
+            display: none;
+        }
+        #message{
+            font-size: 25px;
+            color: white;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-section">
+            <h1>오늘은 몇 잔의 물을 마셨나요?</h1>
+            <div class="input-container">
+                <input type="number" id="waterIntake" placeholder="사용자 입력 폼">
+                <button onclick="checkWaterIntake()">입력</button>
+            </div>
+            <div class="message-section" id="output">
+                <p id="message"></p>
+                <img id="messageImage" src="" alt="message image">
+            </div>
+        </div>
+        <div class="chart-section">
+            <canvas id="waterChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        let waterData = JSON.parse(localStorage.getItem('waterData')) || [];
+        let dateLabels = JSON.parse(localStorage.getItem('dateLabels')) || [];
+        let waterChart;
+
+        function checkWaterIntake() {
+            const intake = parseInt(document.getElementById('waterIntake').value);
+            const message = document.getElementById('message');
+            const messageImage = document.getElementById('messageImage');
+            const today = new Date().toLocaleDateString('ko-KR');
+
+            if (intake >= 7) {
+                message.innerHTML = '짝짝짝 충분해요!';
+                messageImage.src = 'https://cdn-icons-png.flaticon.com/512/1599/1599905.png'; 
+            } else {
+                message.innerHTML = '부족해요 내일 더!';
+                messageImage.src = 'https://cdn-icons-png.flaticon.com/512/1404/1404885.png'; 
+            }
+
+            messageImage.style.display = 'block'; // Display the image
+
+            waterData.push(intake);
+            dateLabels.push(today);
+            localStorage.setItem('waterData', JSON.stringify(waterData));
+            localStorage.setItem('dateLabels', JSON.stringify(dateLabels));
+            updateChart();
+        }
+
+        function updateChart() {
+            const ctx = document.getElementById('waterChart').getContext('2d');
+        
+            const colors = waterData.map(intake => intake >= 7 ? 'rgba(75, 192, 192, 0.2)' : 'rgba(255, 99, 132, 0.2)');
+            const borderColors = waterData.map(intake => intake >= 7 ? 'rgba(75, 192, 192, 1)' : 'rgba(255, 99, 132, 1)');
+
+            if (!waterChart) {
+                waterChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: dateLabels,
+                        datasets: [{
+                            label: '하루 동안 마신 물 컵 수',
+                            data: waterData,
+                            backgroundColor: colors,
+                            borderColor: borderColors,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            } else {
+                waterChart.data.labels = dateLabels;
+                waterChart.data.datasets[0].data = waterData;
+                waterChart.data.datasets[0].backgroundColor = colors;
+                waterChart.data.datasets[0].borderColor = borderColors;
+                waterChart.update();
+            }
+        }
+
+        updateChart();
+    </script>
+</body>
+</html>

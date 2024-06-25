@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수분 섭취 기록</title>
+    <link rel="stylesheet" href="water.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>과연 오늘 물 섭취량은?</h2>
+        </header>
+        <main>
+            <div class="water-section">
+                <span class="icon"><i class="ri-cup-line"></i></span>
+                <div class="water-display">
+                    <span class="water">00.0</span><span class="unit">ml</span>
+                </div>
+                <button class="goal-button">목표 섭취량 한번만 설정하기</button>
+                <div class="goal-input-container" style="display: none;">
+                    <input type="number" class="goal-water-input" placeholder="목표 섭취량 입력 (ml)">
+                    <button class="set-goal-button">설정</button>
+                </div>
+                <button class="record-button">기록하기</button>
+                <div class="input-container" style="display: none;">
+                    <input type="number" class="water-input" placeholder="물 섭취량 입력 (ml)">
+                    <button class="save-button">저장</button>
+                </div>
+                <div class="sync-text">건강 앱에서 불러오기 <span class="sync-icon">↻</span></div>
+            </div>
+            <div class="chart-container">
+                <canvas id="waterChart"></canvas>
+            </div>
+        </main>
+    </div>
+    <script src="water.js"></script>
+</body>
+</html>

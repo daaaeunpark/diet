@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="list.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Healthcare Diet Dashboard</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 5px;
+        }
+        iframe {
+            width: 600px; /* 부모 요소의 폭에 맞추기 */
+            max-width: 600px; /* 최대 너비 설정 */
+            height: 170px; /* 고정 높이 설정 */
+            border-radius: 25px; /* 모서리를 둥글게 설정 */
+            border: none; /* 불필요한 테두리 제거 */
+        }
+        #exercise-name {
+            margin-left: 40px; /* 원하는 여백 크기로 변경 */
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+</head>
+<body class="body">
+    <section class="header">
+        <div class="logo">
+            <h1>For Your Dashboard !</h1>
+            <span class="icon-head"><i class="ri-magic-line"></i></span>
+            <div class="auth-links">
+                <a href="#" class="login">로그인</a>
+                <a href="#" class="signup">회원가입</a>
+                <div class="dark--theme--btn">
+                    <i class="ri-moon-line moon"></i>
+                    <i class="ri-sun-line sun"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="main">
+        <div class="sidebar">
+            <ul class="sidebar--items">
+                <li>
+                    <a href="">
+                        <span class="icon"><i class="ri-home-3-line"></i></span>
+                        <div class="sidebar--item">Home</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="record.html"> 
+                        <span class="icon"><i class="ri-ball-pen-line"></i></span>
+                        <div class="sidebar--item">My Record</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="water.html">
+                        <span class="icon"><i class="ri-drop-line"></i></span>
+                        <div class="sidebar--item">Water</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="chat.html">
+                        <span class="icon"><i class="ri-wechat-line"></i></span>
+                        <div class="sidebar--item">Diary</div>
+                    </a>
+                </li>
+            </ul>              
+        </div>
+        <div class="main--container">
+            <div class="section--title">
+                <img src="https://www.pknu.ac.kr/upload/raonkeditordata/2022/08/18/20220818_102119098_72062.png" alt="Image Description" style="max-width: 100%; max-height: 100px;">
+                <h3 class="title"><span id="today-date"></span>♫</h3>
+            </div>
+
+            <div class="cards">
+                <div class="card card-1"> 
+                    <div class="card--title">
+                        <span class="card--icon icon"><i class="ri-user-heart-line"></i></span>
+                        <span>User</span>
+                    </div>
+                    <div class="user-form">
+                        <div class="input-field">
+                            <label for="name">Name: </label>
+                            <span id="name-display"></span>
+                            <input type="text" id="name">
+                            <button onclick="updateName(event)">입력</button>
+                        </div>
+                        <div class="input-field">
+                            <label for="gender">Gender: </label>
+                            <span id="gender-display"></span>
+                            <input type="text" id="gender">
+                            <button onclick="updateGender(event)">입력</button>
+                        </div>
+                        <div class="input-field">
+                            <label for="age">Age: </label>
+                            <span id="age-display"></span>
+                            <input type="text" id="age">
+                            <button onclick="updateAge(event)">입력</button>
+                        </div>
+                        <div class="input-field">
+                            <label for="period">Period: </label>
+                            <span id="period-display"></span>
+                            <input type="text" id="period">
+                            <button onclick="updatePeriod(event)">입력</button>
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="card card-2">
+                    <div class="card--title">
+                        <span class="card--icon icon"><i class="ri-restaurant-fill"></i></span>
+                        <span>Today's meals</span>
+                        <img src="https://www.pknu.ac.kr/upload/raonkeditordata/2022/08/18/20220818_102116973_16002.png" alt="Image record" style="max-width: 100%; max-height: 150px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                    </div>
+                    <a href="food.html">
+                        <button class="rectangle-button">Let's record now !</button>
+                    </a>
+                </div>
+
+                <div class="content">
+                    <div class="content-header">
+                        <p>To Do List</p>
+                    </div>
+                    <div class="content-body"></div>
+                    <div class="content-enter">
+                        <input type="text" id="text-input" class="text-input"/>  
+                    </div>
+                    <div class="content-footer">
+                        <button id="clickIcon">
+                            <i class="ri-send-plane-2-fill"></i>
+                        </button>
+                    </div>  
+                </div> 
+            </div>
+            
+            <div class="wrapper">
+                <div class="target-vs-sales--container">
+                    <div class="section--title">
+                        <h4 class="title"><i class="ri-run-fill"></i>Today's exercise</h4>
+                    </div>
+                    <div id="exercise-container">
+                        <div class="exercise-header">
+                            <h3><span id="exercise-name"></span></h3>
+                        </div>
+                        <div class="video-container">
+                            <iframe id="exercise-video-1" src="" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="categori">
+                    <div class="top">
+                        <p>Stretching for you</p>
+                        <div class="stretching-container">
+                            <div class="stretching-video">
+                                <iframe src="https://www.youtube.com/embed/2LyDkE7sDec" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="dark.js"></script>
+    <script src="list.js"></script>
+    <script>
+       // 페이지가 로드될 때 저장된 값을 불러오는 함수
+window.onload = function() {
+    const titleElement = document.createElement('h3');
+    titleElement.className = 'title';
+    const todayDate = getTodayDate();
+    titleElement.textContent = `Today's Date: ${todayDate}`;
+    const sectionTitle = document.querySelector('.section--title');
+    sectionTitle.appendChild(titleElement);
+    loadStoredValues();
+};
+
+// 오늘의 날짜를 가져오는 함수
+function getTodayDate() {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const date = new Date();
+    const day = days[date.getDay()];
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+    const dayOfMonth = date.getDate();
+    return `${day}, ${month} ${dayOfMonth}, ${year}`;
+}
+
+// 각 입력값을 업데이트하고 로컬 스토리지에 저장하는 함수들
+function updateName(event) {
+    const newName = document.getElementById("name").value;
+    document.getElementById("name-display").textContent = newName;
+    document.getElementById("name").style.display = "none";
+    event.target.style.display = "none";
+    localStorage.setItem("name", newName);
+}
+
+function updateGender(event) {
+    const newGender = document.getElementById("gender").value;
+    document.getElementById("gender-display").textContent = newGender;
+    document.getElementById("gender").style.display = "none";
+    event.target.style.display = "none";
+    localStorage.setItem("gender", newGender);
+}
+
+function updateAge(event) {
+    const newAge = document.getElementById("age").value;
+    document.getElementById("age-display").textContent = newAge;
+    document.getElementById("age").style.display = "none";
+    event.target.style.display = "none";
+    localStorage.setItem("age", newAge);
+}
+
+function updatePeriod(event) {
+    const newPeriod = document.getElementById("period").value;
+    document.getElementById("period-display").textContent = newPeriod;
+    document.getElementById("period").style.display = "none";
+    event.target.style.display = "none";
+    localStorage.setItem("period", newPeriod);
+}
+
+// 로컬 스토리지에서 값을 불러와서 표시하는 함수
+function loadStoredValues() {
+    const storedName = localStorage.getItem("name");
+    const storedGender = localStorage.getItem("gender");
+    const storedAge = localStorage.getItem("age");
+    const storedPeriod = localStorage.getItem("period");
+
+    if (storedName) {
+        document.getElementById("name-display").textContent = storedName;
+        document.getElementById("name").style.display = "none";
+        document.querySelector('button[onclick="updateName(event)"]').style.display = "none";
+    }
+
+    if (storedGender) {
+        document.getElementById("gender-display").textContent = storedGender;
+        document.getElementById("gender").style.display = "none";
+        document.querySelector('button[onclick="updateGender(event)"]').style.display = "none";
+    }
+
+    if (storedAge) {
+        document.getElementById("age-display").textContent = storedAge;
+        document.getElementById("age").style.display = "none";
+        document.querySelector('button[onclick="updateAge(event)"]').style.display = "none";
+    }
+
+    if (storedPeriod) {
+        document.getElementById("period-display").textContent = storedPeriod;
+        document.getElementById("period").style.display = "none";
+        document.querySelector('button[onclick="updatePeriod(event)"]').style.display = "none";
+    }
+}
+
+// 무작위 운동을 선택하고 페이지에 로드하는 코드
+const exercises = [
+    { 
+        name: "Chest exercise", 
+        videoSrc1: "https://youtube.com/embed/c_5ENJWekbQ",
+    },
+    { 
+        name: "Back exercise", 
+        videoSrc1: "https://youtube.com/embed/ygUYcoLy8OU",
+    },
+    { 
+        name: "Shoulder exercise",
+        videoSrc1: "https://youtube.com/embed/gsFShSYOovU",
+    },
+    {
+        name: "Arm exercise",
+        videoSrc1: "https://youtube.com/embed/ZDIIg4kvY-c",
+    },
+    {
+        name: "Abs exercise",
+        videoSrc1: "https://youtube.com/embed/PjGcOP-TQPE",
+    },
+    {
+        name: "Hip exercise",
+        videoSrc1: "https://youtube.com/embed/xua8mUT0IFQ",
+    },
+    {
+        name: "Thigh exercise",
+        videoSrc1: "https://youtube.com/embed/dpBYYEhdofI",
+    
+    },
+    {
+        name: "Inner thigh exercise",
+        videoSrc1: "https://youtube.com/embed/Q70jQVPkMnc",
+    }
+];
+
+const randomIndex = Math.floor(Math.random() * exercises.length);
+const randomExercise = exercises[randomIndex];
+
+document.getElementById("exercise-name").textContent = randomExercise.name;
+document.getElementById("exercise-video-1").src = randomExercise.videoSrc1;
+
+    </script>
+</body>
+</html>
